@@ -1,11 +1,9 @@
-from typing import Optional, Tuple
-
 import click
 from geopy.geocoders import Nominatim
 from pyinaturalist.node_api import get_observations
 
 
-def get_coordinates(location_name: str) -> Tuple[Optional[float], Optional[float]]:
+def get_coordinates(location_name: str) -> tuple[float | None, float | None]:
     """
     Get the latitude and longitude coordinates of a given location name.
 
@@ -14,7 +12,7 @@ def get_coordinates(location_name: str) -> Tuple[Optional[float], Optional[float
     :return: Tuple containing latitude and longitude
     :rtype: Tuple[Optional[float], Optional[float]]
     """
-    geolocator = Nominatim(user_agent="geoapiExercises")
+    geolocator = Nominatim(user_agent="sthysel-inat-fetch")
     location = geolocator.geocode(location_name)
     if location:
         return location.latitude, location.longitude
@@ -37,7 +35,7 @@ def get_coordinates(location_name: str) -> Tuple[Optional[float], Optional[float
     "--radius",
     type=float,
     required=True,
-    help="Radius around the center point, in kilometers",
+    help="Radius around the centre point, in kilometres",
 )
 @click.option(
     "--location",
@@ -51,10 +49,10 @@ def get_coordinates(location_name: str) -> Tuple[Optional[float], Optional[float
     help="Max number of species to return",
 )
 def fetch_species(
-    latitude: Optional[float],
-    longitude: Optional[float],
+    latitude: float | None,
+    longitude: float | None,
     radius: float,
-    location: Optional[str],
+    location: str | None,
     page_size: int,
 ) -> None:
     """
@@ -82,6 +80,7 @@ def fetch_species(
     species_set = set()
 
     for observation in observations["results"]:
+        print(observation)
         species_name = observation["species_guess"]
         if species_name:
             species_set.add(species_name)
