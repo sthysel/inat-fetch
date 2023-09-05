@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "inat-observations"
+version = "0.1.0"
+description = "Fetches iNaturalist observations for a location"
+authors = ["sthysel <sthysel@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+packages = [
+    { include = "inaturalist_observations", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+geopy = "^2.4.0"
+click = "^8.1.7"
+pyinaturalist = "^0.18.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.0.287"
+black = ">=23.7.0"
+pre-commit = ">=3.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+inat-fetch = "inaturalist_observations.observations:fetch_species"
+
+[tool.poetry.group.vim.dependencies]
+neovim = ">=0.3.1"
+
+[tool.poetry.group.emacs.dependencies]
+python-lsp-server = {extras = ["all"], version = ">=1.3.3"}
+
+
+[tool.ruff]
+# Never enforce `E501` (line length violations).
+ignore = ["E501"]
