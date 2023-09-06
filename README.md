@@ -75,12 +75,10 @@ $ inat-fetch --location "Roleystone, Western Australia" --radius 10
 
 ## Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to
+discuss what you would like to change.
 
 ## License
 
 [MIT License](LICENSE)
 
----
-
-Feel free to customize this README to better fit your project's specific needs!
