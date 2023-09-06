@@ -12,9 +12,9 @@ def get_coordinates(location_name: str) -> tuple[float | None, float | None]:
     :return: Tuple containing latitude and longitude
     :rtype: Tuple[Optional[float], Optional[float]]
     """
-    geolocator = Nominatim(user_agent="sthysel-inat-fetch")
-    location = geolocator.geocode(location_name)
-    if location:
+
+    geolocator = Nominatim(user_agent="geoapiExercises")
+    if location := geolocator.geocode(location_name):
         return location.latitude, location.longitude
     else:
         return None, None
@@ -80,9 +80,7 @@ def fetch_species(
     species_set = set()
 
     for observation in observations["results"]:
-        print(observation)
-        species_name = observation["species_guess"]
-        if species_name:
+        if species_name := observation["species_guess"]:
             species_set.add(species_name)
 
     if species_set:
