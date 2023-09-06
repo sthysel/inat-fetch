@@ -1,5 +1,6 @@
 import click
 from geopy.geocoders import Nominatim
+from pyinaturalist import pprint
 from pyinaturalist.node_api import get_observations
 
 
@@ -77,10 +78,10 @@ def fetch_species(
     }
 
     observations = get_observations(**params)
+    pprint(observations)
     species_set = set()
 
     for observation in observations["results"]:
-        print(observation)
         species_name = observation["species_guess"]
         if species_name:
             species_set.add(species_name)
