@@ -13,19 +13,7 @@ geographic area using the iNaturalist API.
 
 ## Installation
 
-1. Clone this repository:
-
-    ```bash
-    git clone https://github.com/yourusername/species-finder.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd species-finder
-    ```
-
-3. Install the required packages:
+Clone this repository and do
 
     ```bash
     poetry install
