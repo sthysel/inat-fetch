@@ -15,9 +15,9 @@ geographic area using the iNaturalist API.
 
 Clone this repository and do
 
-    ```bash
-    poetry install
-    ```
+```bash
+poetry install
+```
 
 ## Usage
 
